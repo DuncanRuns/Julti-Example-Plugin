@@ -40,7 +40,7 @@ public class ExamplePlugin implements PluginInitializer {
             long currentTime = System.currentTimeMillis();
             if (currentTime - timeTracker.get() > 3000) {
                 // This gets ran every 3 seconds
-                Julti.log(Level.INFO, "Example Plugin ran for another 3 seconds.");
+                // Julti.log(Level.INFO, "Example Plugin ran for another 3 seconds.");
                 timeTracker.set(currentTime);
             }
         });
@@ -48,6 +48,10 @@ public class ExamplePlugin implements PluginInitializer {
         PluginEvents.registerRunnableEvent(PluginEvents.RunnableEventType.STOP, () -> {
             // This gets run when Julti is shutting down
             Julti.log(Level.INFO, "Example plugin shutting down...");
+        });
+
+        PluginEvents.registerInstanceEvent(PluginEvents.InstanceEventType.ACTIVATE, instance -> {
+            Julti.log(Level.INFO, "ExamplePlugin: Instance activated: " + instance);
         });
     }
 }

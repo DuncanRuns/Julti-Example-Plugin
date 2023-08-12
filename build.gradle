@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
     // Pick a version from https://jitpack.io/#DuncanRuns/Julti
-    implementation 'com.github.DuncanRuns:Julti:4099f1cc71' // Since plugins are not yet released, this points to a commit
+    implementation 'com.github.DuncanRuns:Julti:288fb1f774' // Since plugins are not yet released, this points to a commit
 }
 
 

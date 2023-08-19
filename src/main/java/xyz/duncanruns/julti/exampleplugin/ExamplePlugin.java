@@ -4,10 +4,12 @@ import com.google.common.io.Resources;
 import org.apache.logging.log4j.Level;
 import xyz.duncanruns.julti.Julti;
 import xyz.duncanruns.julti.JultiAppLaunch;
+import xyz.duncanruns.julti.gui.JultiGUI;
 import xyz.duncanruns.julti.plugin.PluginEvents;
 import xyz.duncanruns.julti.plugin.PluginInitializer;
 import xyz.duncanruns.julti.plugin.PluginManager;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.concurrent.atomic.AtomicLong;
@@ -19,7 +21,7 @@ public class ExamplePlugin implements PluginInitializer {
 
         JultiAppLaunch.launchWithDevPlugin(args, PluginManager.JultiPluginData.fromString(
                 Resources.toString(Resources.getResource(ExamplePlugin.class, "/julti.plugin.json"), Charset.defaultCharset())
-        ));
+        ), new ExamplePlugin());
     }
 
     @Override
@@ -53,5 +55,15 @@ public class ExamplePlugin implements PluginInitializer {
         PluginEvents.registerInstanceEvent(PluginEvents.InstanceEventType.ACTIVATE, instance -> {
             Julti.log(Level.INFO, "ExamplePlugin: Instance activated: " + instance);
         });
+    }
+
+    @Override
+    public String getMenuButtonName() {
+        return "OMG Button!";
+    }
+
+    @Override
+    public void onMenuButtonPress() {
+        JOptionPane.showMessageDialog(JultiGUI.getJultiGUI(), "Holy moly! You pressed the example plugin button!!!", "Jojulti Multi Instance Macro Example Plugin Button.", JOptionPane.INFORMATION_MESSAGE);
     }
 }

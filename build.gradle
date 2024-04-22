@@ -15,9 +15,13 @@ repositories {
     maven { url "https://www.jetbrains.com/intellij-repository/releases" }
 }
 
+compileJava {
+    options.compilerArgs << '-parameters'
+}
+
 dependencies {
     // Choose Julti version: https://jitpack.io/#DuncanRuns/Julti
-    implementation 'com.github.DuncanRuns:Julti:v1.0.2'
+    implementation 'com.github.DuncanRuns:Julti:main-SNAPSHOT'
 }
 
 
